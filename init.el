@@ -3,10 +3,14 @@
              '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-(add-to-list 'exec-path "/Users/caw/opt/anaconda3/bin/")
+
 (load-theme 'zenburn t)
+(set-frame-font "Menlo 14" nil t)
 
 (setq default-directory "~")
+
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
 (setq inhibit-startup-message t) 
 (setq initial-scratch-message nil)
@@ -22,15 +26,20 @@
 (electric-pair-mode nil)
 (setq ring-bell-function 'ignore)
 
+(yas-global-mode 1)
+
 ;; lisp
 (add-hook 'after-init-hook 'global-company-mode)
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq common-lisp-hyperspec-root "file:///Users/caw/HyperSpec/")
 
-
 ;; org
 
 (require 'org-bullets)
+(require 'org-pdftools)
+(add-to-list 'org-file-apps 
+             '("\\.pdf\\'" . (lambda (file link)
+                                     (org-pdftools-open link))))
 
 (require 'ox-pandoc)
 (global-set-key (kbd "C-c l") 'org-store-link)
@@ -63,12 +72,7 @@
  '(electric-indent-mode nil)
  '(electric-pair-mode nil)
  '(package-selected-packages
-   '(zenburn-theme arjen-grey-theme color-theme-modern use-package zotxt yasnippet-snippets yasnippet-classic-snippets xref-js2 white-theme w3m sublime-themes sly-repl-ansi-color sly-quicklisp sly-named-readtables sly-macrostep sly-hello-world sly-asdf slime-company racket-mode projectile-variable pandoc-mode pandoc ox-pandoc org-present-remote org-bullets major-mode-hydra magit indium hyperlist-mode hyperbole helm-sly helm-projectile haskell-mode golden-ratio-scroll-screen golden-ratio fireplace exec-path-from-shell evil-visual-mark-mode evil-org evil-easymotion evil-better-visual-line company-auctex common-lisp-snippets cider-hydra cider-eval-sexp-fu cider-decompile auto-complete-auctex ag ac-sly ac-js2 ac-geiser ac-clang ac-cider 2048-game 0x0))
+   '(pdf-tools zenburn-theme arjen-grey-theme color-theme-modern use-package zotxt yasnippet-snippets yasnippet-classic-snippets xref-js2 white-theme w3m sublime-themes sly-repl-ansi-color sly-quicklisp sly-named-readtables sly-macrostep sly-hello-world sly-asdf slime-company racket-mode projectile-variable pandoc-mode pandoc ox-pandoc org-present-remote org-bullets major-mode-hydra magit indium hyperlist-mode hyperbole helm-sly helm-projectile haskell-mode golden-ratio-scroll-screen golden-ratio fireplace exec-path-from-shell evil-visual-mark-mode evil-org evil-easymotion evil-better-visual-line company-auctex common-lisp-snippets cider-hydra cider-eval-sexp-fu cider-decompile auto-complete-auctex ag ac-sly ac-js2 ac-geiser ac-clang ac-cider 2048-game 0x0))
  '(ring-bell-function 'ignore)
  '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
+
