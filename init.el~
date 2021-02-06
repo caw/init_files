@@ -4,7 +4,8 @@
 (package-initialize)
 
 
-;;(load-theme 'zenburn t)
+(load-theme 'zenburn t)
+
 
 (setq default-directory "~")
 
