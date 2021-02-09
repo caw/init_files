@@ -4,7 +4,7 @@
 (package-initialize)
 
 
-;;(load-theme 'zenburn t)
+(load-theme 'twilight-bright t)
 
 (setq default-directory "~")
 
@@ -30,11 +30,11 @@
 ;; reference manager
 (require 'org-ref)
 
-(setq reftex-default-bibliography '("~/Documents/org/PhD/bibliographies/deterioration_basic_science.bib")
+(setq reftex-default-bibliography '("~/Documents/org/PhD/bibliographies/deterioration_basic_science.bib"))
 
-(setq org-ref-bibliograph-notes "~/Documents/org/PhD/bibliographies"
+(setq org-ref-bibliography-notes "~/Documents/org/PhD/bibliographies/notes.org"
       org-ref-default-bibliography '("~/Documents/org/PhD/bibliographies/deterioration_basic_science.bib")
-      org-ref-bdi-directory "~/Dropbox/bibliography/bibtex-pdfs")
+      org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs")
 
 ;; lisp
 (add-hook 'after-init-hook 'global-company-mode)
@@ -52,6 +52,7 @@
 ;; org
 
 (require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (require 'org-pdftools)
 (add-to-list 'org-file-apps 
              '("\\.pdf\\'" . (lambda (file link)
@@ -84,7 +85,7 @@
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function 'eww-browse-url)
  '(custom-safe-themes
-   '("60317874283814fe51bda023c1fc26dc983db0853796d5cd6dfd09d7331fc77a" "e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" "fe36e4da2ca97d9d706e569024caa996f8368044a8253dc645782e01cd68d884" "57d7e8b7b7e0a22dc07357f0c30d18b33ffcbb7bcd9013ab2c9f70748cfa4838" "5f4dfda04fbf7fd55228266c8aab73953d3087cea7fd06dd7f8ff1e4a497c739" "e0d42a58c84161a0744ceab595370cbe290949968ab62273aed6212df0ea94b4" "c48551a5fb7b9fc019bf3f61ebf14cf7c9cdca79bcb2a4219195371c02268f11" "3cd28471e80be3bd2657ca3f03fbb2884ab669662271794360866ab60b6cb6e6" default))
+   '("76b4632612953d1a8976d983c4fdf5c3af92d216e2f87ce2b0726a1f37606158" "60317874283814fe51bda023c1fc26dc983db0853796d5cd6dfd09d7331fc77a" "e6df46d5085fde0ad56a46ef69ebb388193080cc9819e2d6024c9c6e27388ba9" "fe36e4da2ca97d9d706e569024caa996f8368044a8253dc645782e01cd68d884" "57d7e8b7b7e0a22dc07357f0c30d18b33ffcbb7bcd9013ab2c9f70748cfa4838" "5f4dfda04fbf7fd55228266c8aab73953d3087cea7fd06dd7f8ff1e4a497c739" "e0d42a58c84161a0744ceab595370cbe290949968ab62273aed6212df0ea94b4" "c48551a5fb7b9fc019bf3f61ebf14cf7c9cdca79bcb2a4219195371c02268f11" "3cd28471e80be3bd2657ca3f03fbb2884ab669662271794360866ab60b6cb6e6" default))
  '(electric-indent-mode nil)
  '(electric-pair-mode nil)
  '(package-selected-packages
@@ -101,4 +102,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
+ '(default ((t (:background nil :family "Menlo" :foundry "nil" :slant normal :weight normal :height 140 :width normal)))))
